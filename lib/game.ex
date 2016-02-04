@@ -3,7 +3,7 @@ defmodule Game do
 
   @derive [Poison.Encoder]
 
-  defstruct [:id,:board,:next,:round,:score]
+  defstruct [:id,:board,:next,:round,:score,:previous_elements]
 
   def move(gameId, target) do
     decode BotApi.callMove(gameId, target)
