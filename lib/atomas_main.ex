@@ -7,7 +7,7 @@ defmodule AtomasMain do
     import Supervisor.Spec, warn: false
     children = []
 
-    AtomasBot.hello()
+    Bot.hello()
 
     opts = [strategy: :one_for_one, name: AtomasMain.Supervisor]
     Supervisor.start_link(children, opts)
