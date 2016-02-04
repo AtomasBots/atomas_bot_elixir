@@ -1,7 +1,7 @@
 defmodule Bot do
   @moduledoc false
 
-  def execute() do
+  def execute do
     game = Game.new(BotLogic.name)
     loopGame(game, game.next)
   end
@@ -12,12 +12,12 @@ defmodule Bot do
   end
 
   def loopGame(game, next) do
-     IO.puts("game ended, score: #{game.score}")
+     IO.puts("Game has ended, your score: #{game.score}")
   end
 
   def nextGame(game) do
     nextMove = BotLogic.nextMove(game)
-    IO.puts("nextMove : #{nextMove}")
+    IO.puts("nextMove: #{nextMove}")
     Game.move(game.id, nextMove)
   end
 end
