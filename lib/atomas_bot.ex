@@ -2,7 +2,7 @@ defmodule AtomasBot do
   @moduledoc false
 
   def hello() do
-    IO.puts("wordl")
+    IO.puts(AtomasNewGame.callNewGame)
   end
 
 end
