@@ -7,4 +7,9 @@ defmodule AtomasMove do
     response.body
   end
 
+  def move(gameId, target) do
+    responseBody = callMove(gameId, target)
+    game = Poison.decode!(responseBody, as: %AtomasGame{})
+    game
+  end
 end
