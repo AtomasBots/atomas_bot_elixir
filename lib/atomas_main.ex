@@ -7,7 +7,7 @@ defmodule AtomasMain do
     import Supervisor.Spec, warn: false
     children = []
 
-    executeForever
+    if Mix.env != :test, do: executeForever
 
     opts = [strategy: :one_for_one, name: AtomasMain.Supervisor]
     Supervisor.start_link(children, opts)
