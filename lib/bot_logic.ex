@@ -21,18 +21,22 @@ defmodule BotLogic do
     firstPair(game.board, 0)
   end
 
-  def firstPair(board, index) do
-    _iterate(board, 0)
-    #if List.first(board) == List.first(List.delete_at(board, 0)), do: index + 1, else: firstPair(List.delete_at(board, 0), index + 1)
+  def firstPair([h|tail], index) do
+    _firstPair(h, tail, 1)
   end
 
-  def _iterate([h|tail], acc) do
-    _iterate(tail, acc + 1)
-  end
-
-  def _iterate([],acc) do
+  def _firstPair(current, [h|tail], acc) when current == h do
     acc
   end
+
+  def _firstPair(current, [h|tail], acc) do
+    _firstPair(h, tail, acc + 1)
+  end
+
+  def _firstPair(current, [], acc) do
+    acc
+  end
+
   def addElement(game, next) do
     0
   end
