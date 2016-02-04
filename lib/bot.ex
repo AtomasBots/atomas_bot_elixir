@@ -11,18 +11,13 @@ defmodule Bot do
     loopGame(gameAfter, gameAfter.next)
   end
 
+  def loopGame(game, next) do
+     IO.puts("game ended, score: #{game.score}")
+  end
+
   def nextGame(game) do
-    nextMove = nextMove(game)
+    nextMove = BotLogic.nextMove(game)
     IO.puts("nextMove : #{nextMove}")
     Game.move(game.id, nextMove)
   end
-
-  def loopGame(game, next) do
-     IO.puts("game ends")
-  end
-
-  def nextMove(game) do
-    0 #insert logic here
-  end
-
 end
