@@ -9,8 +9,8 @@ defmodule Game do
     decode BotApi.callMove(gameId, target)
   end
 
-  def new() do
-    decode BotApi.callNewGame()
+  def new(name) do
+    decode BotApi.callNewGame(name)
   end
 
   def decode(string) do
