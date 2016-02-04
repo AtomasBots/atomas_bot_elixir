@@ -2,7 +2,7 @@ defmodule BotLogic do
   @moduledoc false
 
   def name do
-    "elixir"
+    "Ordon"
   end
 
   def nextMove(game) do
