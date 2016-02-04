@@ -1,8 +1,8 @@
 defmodule Bot do
   @moduledoc false
 
-  def hello() do
-    game = Game.new("elixir")
+  def execute() do
+    game = Game.new(BotLogic.name)
     loopGame(game, game.next)
   end
 
