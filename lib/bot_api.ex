@@ -4,7 +4,7 @@ defmodule BotApi do
   @url "192.168.1.65"
 
   def callNewGame() do
-    call "#{@url}/new_game"
+    call "#{@url}/new_game?name=elixir"
   end
 
   def callMove(gameId, target) do
