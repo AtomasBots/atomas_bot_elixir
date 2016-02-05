@@ -26,4 +26,9 @@ defmodule AtomasBotElixirTest do
     assert BotLogic.bestIndex(board,5) == 2
   end
 
+  test "should put element close to similar element" do
+    board = [1,2,3,4,5,5]
+
+    assert BotLogic._nextMove(board,2) == 1
+  end
 end
