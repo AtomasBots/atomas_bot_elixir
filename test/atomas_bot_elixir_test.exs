@@ -17,18 +17,18 @@ defmodule AtomasBotElixirTest do
   test "should return index of the best scored board" do
     board = [2,2,5]
 
-    assert BotLogic.bestIndex(board) == 1
+    assert BotLogic.bestIndex(board) == {4, 1}
   end
 
   test "should return index of the best scored board with given next" do
     board = [2,2,5]
 
-    assert BotLogic.bestIndex(board,5) == 2
+    assert BotLogic.bestIndex(board,5) == {14, 0}
   end
 
   test "should put element close to similar element" do
-    board = [1,2,3,4,5,5]
+    board = [1,2,3,4,5,5,4,3,1,66,67,68]
 
-    assert BotLogic._nextMove(board,2) == 1
+    assert BotLogic._nextMove(board,2) == 8
   end
 end

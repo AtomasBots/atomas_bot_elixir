@@ -10,15 +10,22 @@ defmodule BotLogic do
   end
 
   def _nextMove(board, next) when next == 0 do
-    bestIndex(board)
+    {_, index} = bestIndex(board)
+    index
   end
 
   def _nextMove(board,next) do
-    bestIndex(board, next)
+    {_, index} = bestIndex(board, next)
+    index
   end
 
   def newBoard(board, next, index) do
     List.insert_at(board, index, next)
+  end
+
+  def bestValue(board) do
+    {value, _} = bestIndex(board)
+    value
   end
 
   def bestIndex(board) do
@@ -34,13 +41,12 @@ defmodule BotLogic do
 
   def bestIndex(board, next) do
     newBoards = possibleBoards(board,next)
-    boardsValues = Enum.map(newBoards, &bestIndex(&1))
+    boardsValues = Enum.map(newBoards, &bestValue(&1))
     findMaxValueIndex(boardsValues)
   end
 
   def findMaxValueIndex(boardsValues) do
     indexBoards = boardsValues |> Enum.with_index
-    {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
-    index
+    Enum.max_by(indexBoards,  fn {v, i} -> v end)
   end
 end
