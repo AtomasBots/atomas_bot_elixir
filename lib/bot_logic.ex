@@ -2,7 +2,7 @@ defmodule BotLogic do
   @moduledoc false
 
   def name do
-    "elixir"
+    "Delta Szwadron Super Cool Komando Wilkow Alfa"
   end
 
   def nextMove(game) do
