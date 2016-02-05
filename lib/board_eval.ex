@@ -10,13 +10,17 @@ defmodule BoardEval do
   end
 
   def evalPlusAtIndex(board, index) do
-    valueOfEvalFor(if Enum.at(board, index - 1) == Enum.at(board, index + 1), do: [Enum.at(board, index - 1), Enum.at(board, index + 1)], else: [])
+    evalPlusOnMiddle(movePlusToMiddle(board, index))
   end
 
   def movePlusToMiddle(board, indexOfPlus) do
     size = Enum.count(board)
     middle = div(size, 2)
-    Enum.to_list(Stream.take(Stream.drop(Stream.cycle(board), size - middle + indexOfPlus), size))
+    {Enum.to_list(Stream.take(Stream.drop(Stream.cycle(board), size - middle + indexOfPlus), size)), middle}
+  end
+
+  def evalPlusOnMiddle({board, index}) do
+    valueOfEvalFor(if Enum.at(board, index - 1) == Enum.at(board, index + 1), do: [Enum.at(board, index - 1), Enum.at(board, index + 1)], else: [])
   end
 
   def valueOfEvalFor(listOfJoinedElements) do
