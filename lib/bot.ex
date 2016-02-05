@@ -17,7 +17,7 @@ defmodule Bot do
 
   def nextGame(game) do
     nextMove = BotLogic.nextMove(game)
-    IO.puts("nextMove: #{nextMove}")
+    # IO.puts("nextMove: #{nextMove}")
     Game.move(game.id, nextMove)
   end
 end

@@ -10,11 +10,21 @@ defmodule BotLogic do
   end
 
   def _nextMove(board, next) when next == 0 do
-    bestIndex(board)
+    {v,index} = bestIndex(board)
+    if v == 0 do 
+      i = Enum.find_index(board, fn(x) -> x == next end)
+      if i != nil do index = i end
+    end
+    index
   end
 
   def _nextMove(board,next) do
-    bestIndex(board, next)
+    {v, index} = bestIndex(board, next)
+    if v == 0 do 
+      i = Enum.find_index(board, fn(x) -> x == next end)
+      if i != nil do index = i end
+    end
+    index
   end
 
   def newBoard(board, next, index) do
@@ -40,7 +50,6 @@ defmodule BotLogic do
 
   def findMaxValueIndex(boardsValues) do
     indexBoards = boardsValues |> Enum.with_index
-    {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
-    index
+    {v, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
   end
 end
