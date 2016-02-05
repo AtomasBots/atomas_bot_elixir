@@ -19,4 +19,11 @@ defmodule AtomasBotElixirTest do
 
     assert BotLogic.bestIndex(board) == 1
   end
+
+  test "should return index of the best scored board with given next" do
+    board = [2,2,5]
+
+    assert BotLogic.bestIndex(board,5) == 2
+  end
+
 end

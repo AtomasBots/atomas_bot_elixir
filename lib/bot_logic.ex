@@ -16,9 +16,7 @@ defmodule BotLogic do
   def bestIndex(board) do
     newBoards = possibleBoards(board, 0)
     boardsValues = Enum.map(newBoards, &BoardEval.eval(&1))
-    indexBoards = boardsValues |> Enum.with_index
-    {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
-    index
+    findMaxValueIndex(boardsValues)
   end
 
   def possibleBoards(board, next) do
@@ -26,10 +24,15 @@ defmodule BotLogic do
     Enum.map(0..size, &BotLogic.newBoard(board, next, &1))
   end
 
+  def bestIndex(board, next) do
+    newBoards = possibleBoards(board,next)
+    boardsValues = Enum.map(newBoards, &bestIndex(&1))
+    findMaxValueIndex(boardsValues)
+  end
 
-
-  #def bestIndex(board, next) do
-  #
-  #end
-
+  def findMaxValueIndex(boardsValues) do
+    indexBoards = boardsValues |> Enum.with_index
+    {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
+    index
+  end
 end
