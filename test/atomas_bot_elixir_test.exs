@@ -21,28 +21,19 @@ defmodule AtomasBotElixirTest do
   test "should create new board" do
     board = [1,2,3,4,5]
 
-    assert newBoard(board, 1, 0) == [1, 1,2,3,4,5]
-  end
-
-  def newBoard(board, next, index) do
-    List.insert_at(board, index, next)
+    assert BotLogic.newBoard(board, 1, 0) == [1, 1,2,3,4,5]
   end
 
   test "should generate new boards" do
     board = [1,2]
     size = board |> Enum.count
-    results = Enum.map(0..size, &newBoard(board, 5, &1))
+    results = Enum.map(0..size, &BotLogic.newBoard(board, 5, &1))
     assert results == [[5,1,2],[1,5,2],[1,2,5]]
   end
 
-  test "evaluate generated board" do
+  test "should evaluate generated board" do
     board = [2,2,5]
-    size = board |> Enum.count
-    newBoards = Enum.map(0..size, &newBoard(board, 0, &1))
-    boardsValues = Enum.map(newBoards, &BoardEval.eval(&1))
-    indexBoards = boardsValues |> Enum.with_index
-    {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
 
-    assert index == 1
+    assert BotLogic.bestIndex(board) == 1
   end
 end
