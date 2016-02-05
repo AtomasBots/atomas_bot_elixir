@@ -10,6 +10,10 @@ defmodule BoardEval do
   end
 
   def evalPlusAtIndex(board, index) do
-    if Enum.at(board, index - 1) == Enum.at(board, index + 1), do: 2, else: 0
+    valueOfEvalFor(if Enum.at(board, index - 1) == Enum.at(board, index + 1), do: [Enum.at(board, index - 1), Enum.at(board, index + 1)], else: [])
+  end
+
+  def valueOfEvalFor(listOfJoinedElements) do
+    Enum.sum(listOfJoinedElements)
   end
 end
