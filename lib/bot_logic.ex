@@ -14,12 +14,22 @@ defmodule BotLogic do
   end
 
   def bestIndex(board) do
-    size = board |> Enum.count
-    newBoards = Enum.map(0..size, &newBoard(board, 0, &1))
+    newBoards = possibleBoards(board, 0)
     boardsValues = Enum.map(newBoards, &BoardEval.eval(&1))
     indexBoards = boardsValues |> Enum.with_index
     {_, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
     index
   end
+
+  def possibleBoards(board, next) do
+    size = board |> Enum.count
+    Enum.map(0..size, &BotLogic.newBoard(board, next, &1))
+  end
+
+
+
+  #def bestIndex(board, next) do
+  #
+  #end
 
 end
