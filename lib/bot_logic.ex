@@ -6,7 +6,15 @@ defmodule BotLogic do
   end
 
   def nextMove(game) do
-    0 #insert logic here
+    _nextMove(game.board, game.next)
+  end
+
+  def _nextMove(board, next) when next == 0 do
+    bestIndex(board)
+  end
+
+  def _nextMove(board,next) when next <> 0 do
+    bestIndex(board, next)
   end
 
   def newBoard(board, next, index) do
