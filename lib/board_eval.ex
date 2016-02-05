@@ -22,8 +22,8 @@ defmodule BoardEval do
   end
 
   def listOfJoinedElements({board, index}) do
-    if Enum.at(board, index - 1) == Enum.at(board, index + 1), 
-    do: [Enum.at(board, index - 1), Enum.at(board, index + 1)],
+    if Enum.at(board, index - 1) == Enum.at(board, index + 1),
+    do: [Enum.at(board, index - 1), Enum.at(board, index + 1)] ++ listOfJoinedElements({List.delete_at(List.delete_at(board, index + 1),index - 1), index - 1}),
     else: []
   end
 

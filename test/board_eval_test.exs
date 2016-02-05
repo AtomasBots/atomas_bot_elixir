@@ -36,4 +36,8 @@ defmodule BoardEvalTest do
   test "Eval considers board as a cycle" do
     assert BoardEval.eval([2, 2, 0]) == 4
   end
+
+  test "Eval should go recursively" do
+    assert BoardEval.eval([2, 3, 3, 2, 0]) == 10
+  end
 end
