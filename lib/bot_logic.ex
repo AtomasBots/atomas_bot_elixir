@@ -2,7 +2,7 @@ defmodule BotLogic do
   @moduledoc false
 
   def name do
-    "Delta Szwadron Super Cool Komando Wilkow Alfa"
+    "DeltaSzwadronSuperCoolKomandoWilkowAlfa"
   end
 
   def nextMove(game) do
@@ -13,7 +13,7 @@ defmodule BotLogic do
     bestIndex(board)
   end
 
-  def _nextMove(board,next) when next <> 0 do
+  def _nextMove(board,next) do
     bestIndex(board, next)
   end
 
