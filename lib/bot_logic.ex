@@ -38,6 +38,18 @@ defmodule BotLogic do
   end
 
   def addElement(game, next) do
-    0
+    insertAfter(next, game.board, 0)
+  end
+
+  def insertAfter(next, [h|tail], acc) when next > h do
+    acc
+  end
+
+  def insertAfter(next, [h|tail], acc) do
+    insertAfter(next, tail, acc + 1)
+  end
+
+  def insertAfter(next, [], acc) do
+    acc
   end
 end
