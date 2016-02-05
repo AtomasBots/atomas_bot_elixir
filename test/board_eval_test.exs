@@ -16,4 +16,24 @@ defmodule BoardEvalTest do
   test "Eval returns 4 when plus joins two twos" do
     assert BoardEval.eval([2, 0, 2]) == 4
   end
+
+  test "Move plus to middle does nothing when plus at middle" do
+    assert BoardEval.movePlusToMiddle([2, 0, 4], 1) == [2, 0, 4]
+  end
+
+  test "Move plus to middle moves plus to middle from left" do
+    assert BoardEval.movePlusToMiddle([0, 4, 2], 0) == [2, 0, 4]
+  end
+
+  test "Move plus to middle moves plus to middle from right" do
+    assert BoardEval.movePlusToMiddle([4, 2, 0], 2) == [2, 0, 4]
+  end
+
+  test "Move plus to middle moves plus on larger board" do
+    assert BoardEval.movePlusToMiddle([4, 2, 1, 0], 3) == [2, 1, 0, 4]
+  end
+
+#  test "Eval consider board as a cycle" do
+#    assert BoardEval.eval([2, 2, 0]) == 4
+#  end
 end
