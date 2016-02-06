@@ -2,7 +2,7 @@ defmodule BotLogic do
   @moduledoc false
 
   def name do
-    "DeltaSzwadronSuperCoolKomandoWilkowAlfa"
+    "CzescJestemMichal"
   end
 
   def nextMove(game) do
@@ -31,6 +31,11 @@ defmodule BotLogic do
     List.insert_at(board, index, next)
   end
 
+  def bestValue(board) do
+    {value, _} = bestIndex(board)
+    value
+  end
+
   def bestIndex(board) do
     newBoards = possibleBoards(board, 0)
     boardsValues = Enum.map(newBoards, &BoardEval.eval(&1))
@@ -44,12 +49,12 @@ defmodule BotLogic do
 
   def bestIndex(board, next) do
     newBoards = possibleBoards(board,next)
-    boardsValues = Enum.map(newBoards, &bestIndex(&1))
+    boardsValues = Enum.map(newBoards, &bestValue(&1))
     findMaxValueIndex(boardsValues)
   end
 
   def findMaxValueIndex(boardsValues) do
     indexBoards = boardsValues |> Enum.with_index
-    {v, index} = Enum.max_by(indexBoards,  fn {v, i} -> v end)
+    Enum.max_by(indexBoards,  fn {v, i} -> v end)
   end
 end
